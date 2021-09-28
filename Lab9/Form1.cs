@@ -210,77 +210,81 @@ namespace Lab9
             return sorted;
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        public void SortFunction(ComboBox cb, ListBox lb)
         {
-            if (comboBox1.SelectedItem == "По алфавиту (возр.)")
+            if (cb.SelectedItem == "По алфавиту (возр.)")
             {
-                listBox1.Sorted = true;
-                listBox1.Sorted = false;
+                lb.Sorted = true;
+                lb.Sorted = false;
             }
-            else if (comboBox1.SelectedItem == "По алфавиту (убыв.)")
+            else if (cb.SelectedItem == "По алфавиту (убыв.)")
             {
-                listBox1.Sorted = true;
-                listBox1.Sorted = false;
+                lb.Sorted = true;
+                lb.Sorted = false;
 
-                string[] Strings = listBox1.Items.OfType<string>().ToArray();
+                string[] Strings = lb.Items.OfType<string>().ToArray();
                 Array.Reverse(Strings, 0, Strings.Length);
 
-                listBox1.BeginUpdate();
+                lb.BeginUpdate();
 
-                listBox1.Items.Clear();
+                lb.Items.Clear();
 
                 foreach (string s in Strings)
                 {
                     string Str = s.Trim();
                     if (s == String.Empty) continue;
 
-                    listBox1.Items.Add(Str);
+                    lb.Items.Add(Str);
                 }
-                listBox1.EndUpdate();
+                lb.EndUpdate();
             }
-            else if (comboBox1.SelectedItem == "По длине (убыв.)")
+            else if (cb.SelectedItem == "По длине (убыв.)")
             {
-                string[] Strings = listBox1.Items.OfType<string>().ToArray();               
+                string[] Strings = lb.Items.OfType<string>().ToArray();
 
-                listBox1.BeginUpdate();
+                lb.BeginUpdate();
 
-                listBox1.Items.Clear();
+                lb.Items.Clear();
 
                 foreach (string s in SortLength(Strings))
                 {
                     string Str = s.Trim();
                     if (s == String.Empty) continue;
 
-                    listBox1.Items.Add(Str);
+                    lb.Items.Add(Str);
                 }
-                listBox1.EndUpdate();
+                lb.EndUpdate();
             }
-            else if (comboBox1.SelectedItem == "По длине (возр.)")
+            else if (cb.SelectedItem == "По длине (возр.)")
             {
-                string[] Strings = listBox1.Items.OfType<string>().ToArray();
+                string[] Strings = lb.Items.OfType<string>().ToArray();
 
                 Strings = SortLength(Strings);
                 Array.Reverse(Strings, 0, Strings.Length);
 
-                listBox1.BeginUpdate();
+                lb.BeginUpdate();
 
-                listBox1.Items.Clear();
+                lb.Items.Clear();
 
                 foreach (string s in Strings)
                 {
                     string Str = s.Trim();
                     if (s == String.Empty) continue;
 
-                    listBox1.Items.Add(Str);
+                    lb.Items.Add(Str);
                 }
-                listBox1.EndUpdate();
+                lb.EndUpdate();
             }
+        }
 
+        private void button5_Click(object sender, EventArgs e)
+        {
+            SortFunction(comboBox1, listBox1);
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
-            moveAllItems(listBox1, listBox2);
+            SortFunction(comboBox2, listBox2);
         }
     }
 }
