@@ -231,6 +231,7 @@ namespace Lab9
             this.button9.TabIndex = 3;
             this.button9.Text = "Сортировать";
             this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // button6
             // 
@@ -250,6 +251,7 @@ namespace Lab9
             this.button5.TabIndex = 3;
             this.button5.Text = "Сортировать";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button4
             // 

@@ -202,5 +202,41 @@ namespace Lab9
         {
             moveAllItems(listBox1, listBox2);
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedItem == "По алфавиту (возр.)")
+            {
+                listBox1.Sorted = true;
+                listBox1.Sorted = false;
+            }
+            else if (comboBox1.SelectedItem == "По алфавиту (убыв.)")
+            {
+                listBox1.Sorted = true;
+                listBox1.Sorted = false;
+
+                string[] Strings = listBox1.Items.OfType<string>().ToArray();
+                Array.Reverse(Strings, 0, Strings.Length);
+
+                listBox1.BeginUpdate();
+
+                listBox1.Items.Clear();
+
+                foreach (string s in Strings)
+                {
+                    string Str = s.Trim();
+                    if (s == String.Empty) continue;
+
+                    listBox1.Items.Add(Str);
+                }
+                listBox1.EndUpdate();
+            }
+
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            moveAllItems(listBox1, listBox2);
+        }
     }
 }
