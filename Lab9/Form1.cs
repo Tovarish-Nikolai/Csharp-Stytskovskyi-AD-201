@@ -107,5 +107,23 @@ namespace Lab9
         {
             Application.Exit();
         }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            listBox2.Items.Clear();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            listBox1.Items.Clear();
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            listBox1.Items.Clear();
+            listBox2.Items.Clear();
+            richTextBox1.ResetText();
+            textBox1.ResetText();
+        }
     }
 }

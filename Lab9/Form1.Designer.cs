@@ -208,6 +208,7 @@ namespace Lab9
             this.button12.TabIndex = 3;
             this.button12.Text = "Сброс";
             this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
             // button10
             // 
@@ -217,6 +218,7 @@ namespace Lab9
             this.button10.TabIndex = 3;
             this.button10.Text = "Очистить";
             this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // button9
             // 
@@ -235,6 +237,7 @@ namespace Lab9
             this.button6.TabIndex = 3;
             this.button6.Text = "Очистить";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button5
             // 
