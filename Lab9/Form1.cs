@@ -118,6 +118,34 @@ namespace Lab9
             listBox1.Items.Clear();
         }
 
+        private void button7_Click(object sender, EventArgs e)
+        {
+            Module AddRec = new Module();
+            AddRec.Owner = this;
+            AddRec.ShowDialog();
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            listBox3.Items.Clear();
+            string Find = textBox1.Text;
+            if (checkBox1.Checked)
+            {
+                foreach (string String in listBox1.Items)
+                {
+                    if (String.Contains(Find)) listBox3.Items.Add(String);
+                }
+            }
+            if (checkBox2.Checked)
+            {
+                foreach (string String in listBox2.Items)
+                {
+                    if (String.Contains(Find)) listBox3.Items.Add(String);
+                }
+            }
+
+        }
+
         private void button12_Click(object sender, EventArgs e)
         {
             listBox1.Items.Clear();
