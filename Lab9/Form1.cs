@@ -153,5 +153,19 @@ namespace Lab9
             richTextBox1.ResetText();
             textBox1.ResetText();
         }
+
+        public void DeleteSelectedStrings (ListBox LB)
+        {
+            for (int i = LB.Items.Count - 1; i >= 0; i--)
+            {
+                if (LB.GetSelected(i)) LB.Items.RemoveAt(i);
+            }
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            DeleteSelectedStrings(listBox1);
+            DeleteSelectedStrings(listBox2);
+        }
     }
 }
