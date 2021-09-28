@@ -203,6 +203,13 @@ namespace Lab9
             moveAllItems(listBox1, listBox2);
         }
 
+        public static string[] SortLength(string[] arr)
+        {
+            string[] sorted = arr.OrderBy(x => x.Length).ToArray();
+
+            return sorted;
+        }
+
         private void button5_Click(object sender, EventArgs e)
         {
             if (comboBox1.SelectedItem == "По алфавиту (возр.)")
@@ -216,6 +223,43 @@ namespace Lab9
                 listBox1.Sorted = false;
 
                 string[] Strings = listBox1.Items.OfType<string>().ToArray();
+                Array.Reverse(Strings, 0, Strings.Length);
+
+                listBox1.BeginUpdate();
+
+                listBox1.Items.Clear();
+
+                foreach (string s in Strings)
+                {
+                    string Str = s.Trim();
+                    if (s == String.Empty) continue;
+
+                    listBox1.Items.Add(Str);
+                }
+                listBox1.EndUpdate();
+            }
+            else if (comboBox1.SelectedItem == "По длине (убыв.)")
+            {
+                string[] Strings = listBox1.Items.OfType<string>().ToArray();               
+
+                listBox1.BeginUpdate();
+
+                listBox1.Items.Clear();
+
+                foreach (string s in SortLength(Strings))
+                {
+                    string Str = s.Trim();
+                    if (s == String.Empty) continue;
+
+                    listBox1.Items.Add(Str);
+                }
+                listBox1.EndUpdate();
+            }
+            else if (comboBox1.SelectedItem == "По длине (возр.)")
+            {
+                string[] Strings = listBox1.Items.OfType<string>().ToArray();
+
+                Strings = SortLength(Strings);
                 Array.Reverse(Strings, 0, Strings.Length);
 
                 listBox1.BeginUpdate();
