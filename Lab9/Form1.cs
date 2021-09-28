@@ -158,7 +158,8 @@ namespace Lab9
         {
             for (int i = LB.Items.Count - 1; i >= 0; i--)
             {
-                if (LB.GetSelected(i)) LB.Items.RemoveAt(i);
+                if (LB.GetSelected(i)) 
+                    LB.Items.RemoveAt(i);
             }
         }
 
@@ -166,6 +167,40 @@ namespace Lab9
         {
             DeleteSelectedStrings(listBox1);
             DeleteSelectedStrings(listBox2);
+        }
+
+        public void moveSelectedItems (ListBox from, ListBox to)
+        {
+            to.BeginUpdate();
+            foreach (object Item in from.SelectedItems)
+            {
+                to.Items.Add(Item);               
+            }
+            to.EndUpdate();
+            DeleteSelectedStrings(from);
+        }
+
+        public void moveAllItems (ListBox from, ListBox to)
+        {
+            to.Items.AddRange(from.Items);
+            from.Items.Clear();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            moveSelectedItems(listBox2, listBox1);
+        }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            moveSelectedItems(listBox1, listBox2);
+        }
+        private void button3_Click(object sender, EventArgs e)
+        {
+            moveAllItems(listBox2, listBox1); 
+        }
+        private void button4_Click(object sender, EventArgs e)
+        {
+            moveAllItems(listBox1, listBox2);
         }
     }
 }
