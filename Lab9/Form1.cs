@@ -167,10 +167,5 @@ namespace Lab9
             DeleteSelectedStrings(listBox1);
             DeleteSelectedStrings(listBox2);
         }
-
-        private void button1_Click(object sender, System.EventArgs e)
-        {
-           
-        }
     }
 }

@@ -286,7 +286,6 @@ namespace Lab9
             this.button1.TabIndex = 3;
             this.button1.Text = "<";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // listBox2
             // 
@@ -446,7 +445,7 @@ namespace Lab9
             this.toolStripMenuItem2.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
             this.toolStripMenuItem2.Size = new System.Drawing.Size(173, 22);
 
-            this.toolStripMenuItem5.Click += new System.EventHandler(ToolStripMenuItem2_Click);
+            this.toolStripMenuItem2.Click += ToolStripMenuItem2_Click;
             this.toolStripMenuItem2.Text = "Открыть";
             // 
             // toolStripMenuItem3
@@ -454,14 +453,14 @@ namespace Lab9
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
             this.toolStripMenuItem3.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
             this.toolStripMenuItem3.Size = new System.Drawing.Size(173, 22);
-            this.toolStripMenuItem5.Click += new System.EventHandler(ToolStripMenuItem3_Click);
+            this.toolStripMenuItem3.Click += ToolStripMenuItem3_Click;
             this.toolStripMenuItem3.Text = "Сохранить";
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
             this.toolStripMenuItem4.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.X)));
-            this.toolStripMenuItem5.Click += new System.EventHandler(ToolStripMenuItem4_Click);
+            this.toolStripMenuItem4.Click += ToolStripMenuItem4_Click;
             this.toolStripMenuItem4.Size = new System.Drawing.Size(173, 22);
             this.toolStripMenuItem4.Text = "Закрыть";
             // 
@@ -469,7 +468,7 @@ namespace Lab9
             // 
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
             this.toolStripMenuItem5.Size = new System.Drawing.Size(24, 20);
-            this.toolStripMenuItem5.Click += new System.EventHandler(ToolStripMenuItem5_Click);
+            this.toolStripMenuItem5.Click += ToolStripMenuItem5_Click;
             this.toolStripMenuItem5.Text = "?";
             // 
             // Form1
@@ -495,10 +494,10 @@ namespace Lab9
             this.ResumeLayout(false);
             this.PerformLayout();
 
-        }        
+        }
 
         #endregion
-
+   
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ComboBox comboBox1;
