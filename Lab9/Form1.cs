@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -74,6 +75,37 @@ namespace Lab9
         private void ToolStripMenuItem5_Click(object sender, System.EventArgs e)
         {
             MessageBox.Show("Информация о приложении и разработчике");
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            listBox1.Items.Clear();
+            listBox2.Items.Clear();
+            listBox1.BeginUpdate();
+            string[] Strings = richTextBox1.Text.Split(new char[] { '\n', '\t', ' ' },
+            StringSplitOptions.RemoveEmptyEntries);
+            foreach (string s in Strings)
+            {
+                string Str = s.Trim();
+
+                if (Str == String.Empty) continue;
+                if (radioButton1.Checked) listBox1.Items.Add(Str);
+                if (radioButton2.Checked)                    
+                {
+                    if (Regex.IsMatch(Str, @"\d")) listBox1.Items.Add(Str);
+                }
+                if (radioButton3.Checked)
+                {
+                    if (Regex.IsMatch(Str, @"\w+@\w+\.\w+")) listBox1.Items.Add(Str);
+                }
+            }
+            listBox1.EndUpdate();
+
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

@@ -198,6 +198,7 @@ namespace Lab9
             this.button13.TabIndex = 3;
             this.button13.Text = "Выход";
             this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
             // button12
             // 
@@ -396,6 +397,7 @@ namespace Lab9
             this.button14.TabIndex = 3;
             this.button14.Text = "Начать";
             this.button14.UseVisualStyleBackColor = true;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
             // 
             // radioButton1
             // 
