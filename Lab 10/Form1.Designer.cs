@@ -54,11 +54,11 @@ namespace Lab_10
             this.saveButtonTS = new System.Windows.Forms.ToolStripButton();
             this.openButtonTS = new System.Windows.Forms.ToolStripButton();
             this.colorButtonTS = new System.Windows.Forms.ToolStripButton();
-            this.exitButtonTS = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.exitButtonTS = new System.Windows.Forms.ToolStripButton();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.coordinatesLabel = new System.Windows.Forms.Label();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.toolStrip1.SuspendLayout();
@@ -217,6 +217,7 @@ namespace Lab_10
             this.pictureBox.Size = new System.Drawing.Size(682, 396);
             this.pictureBox.TabIndex = 1;
             this.pictureBox.TabStop = false;
+            this.pictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseDown);
             // 
             // toolStrip1
             // 
@@ -272,6 +273,11 @@ namespace Lab_10
             this.colorButtonTS.Size = new System.Drawing.Size(98, 68);
             this.colorButtonTS.Text = "toolStripButton4";
             // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(98, 6);
+            // 
             // exitButtonTS
             // 
             this.exitButtonTS.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -280,11 +286,6 @@ namespace Lab_10
             this.exitButtonTS.Name = "exitButtonTS";
             this.exitButtonTS.Size = new System.Drawing.Size(98, 68);
             this.exitButtonTS.Text = "toolStripButton5";
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(98, 6);
             // 
             // panel1
             // 
@@ -295,14 +296,6 @@ namespace Lab_10
             this.panel1.Size = new System.Drawing.Size(682, 21);
             this.panel1.TabIndex = 3;
             // 
-            // trackBar1
-            // 
-            this.trackBar1.AutoSize = false;
-            this.trackBar1.Location = new System.Drawing.Point(527, 1);
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(155, 20);
-            this.trackBar1.TabIndex = 0;
-            // 
             // coordinatesLabel
             // 
             this.coordinatesLabel.AutoSize = true;
@@ -311,6 +304,14 @@ namespace Lab_10
             this.coordinatesLabel.Size = new System.Drawing.Size(25, 15);
             this.coordinatesLabel.TabIndex = 1;
             this.coordinatesLabel.Text = "x, y";
+            // 
+            // trackBar1
+            // 
+            this.trackBar1.AutoSize = false;
+            this.trackBar1.Location = new System.Drawing.Point(527, 1);
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(155, 20);
+            this.trackBar1.TabIndex = 0;
             // 
             // Form1
             // 
