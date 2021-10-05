@@ -59,6 +59,7 @@ namespace Lab_10
             this.panel1 = new System.Windows.Forms.Panel();
             this.coordinatesLabel = new System.Windows.Forms.Label();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.toolStrip1.SuspendLayout();
@@ -94,33 +95,37 @@ namespace Lab_10
             // 
             this.newButton.Image = ((System.Drawing.Image)(resources.GetObject("newButton.Image")));
             this.newButton.Name = "newButton";
-            this.newButton.Size = new System.Drawing.Size(103, 22);
+            this.newButton.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.newButton.Size = new System.Drawing.Size(141, 22);
             this.newButton.Text = "New";
             // 
             // openButton
             // 
             this.openButton.Image = ((System.Drawing.Image)(resources.GetObject("openButton.Image")));
             this.openButton.Name = "openButton";
-            this.openButton.Size = new System.Drawing.Size(103, 22);
+            this.openButton.ShortcutKeys = System.Windows.Forms.Keys.F3;
+            this.openButton.Size = new System.Drawing.Size(141, 22);
             this.openButton.Text = "Open";
             // 
             // saveButton
             // 
             this.saveButton.Image = ((System.Drawing.Image)(resources.GetObject("saveButton.Image")));
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(103, 22);
+            this.saveButton.ShortcutKeys = System.Windows.Forms.Keys.F2;
+            this.saveButton.Size = new System.Drawing.Size(141, 22);
             this.saveButton.Text = "Save";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(100, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(138, 6);
             // 
             // exitButton
             // 
             this.exitButton.Image = ((System.Drawing.Image)(resources.GetObject("exitButton.Image")));
             this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(103, 22);
+            this.exitButton.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.X)));
+            this.exitButton.Size = new System.Drawing.Size(141, 22);
             this.exitButton.Text = "Exit";
             // 
             // editButton
@@ -137,14 +142,17 @@ namespace Lab_10
             // 
             this.undoButton.Image = ((System.Drawing.Image)(resources.GetObject("undoButton.Image")));
             this.undoButton.Name = "undoButton";
-            this.undoButton.Size = new System.Drawing.Size(103, 22);
+            this.undoButton.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
+            this.undoButton.Size = new System.Drawing.Size(180, 22);
             this.undoButton.Text = "Undo";
             // 
             // redoButton
             // 
             this.redoButton.Image = ((System.Drawing.Image)(resources.GetObject("redoButton.Image")));
             this.redoButton.Name = "redoButton";
-            this.redoButton.Size = new System.Drawing.Size(103, 22);
+            this.redoButton.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.Z)));
+            this.redoButton.Size = new System.Drawing.Size(180, 22);
             this.redoButton.Text = "Redo";
             // 
             // penButton
@@ -155,7 +163,7 @@ namespace Lab_10
             this.penButton.Image = ((System.Drawing.Image)(resources.GetObject("penButton.Image")));
             this.penButton.Name = "penButton";
             this.penButton.ShowShortcutKeys = false;
-            this.penButton.Size = new System.Drawing.Size(103, 22);
+            this.penButton.Size = new System.Drawing.Size(180, 22);
             this.penButton.Text = "Pen";
             // 
             // styleButton
@@ -171,6 +179,7 @@ namespace Lab_10
             // solidButton
             // 
             this.solidButton.Checked = true;
+            this.solidButton.CheckOnClick = true;
             this.solidButton.CheckState = System.Windows.Forms.CheckState.Checked;
             this.solidButton.Name = "solidButton";
             this.solidButton.Size = new System.Drawing.Size(138, 22);
@@ -178,12 +187,14 @@ namespace Lab_10
             // 
             // dotButton
             // 
+            this.dotButton.CheckOnClick = true;
             this.dotButton.Name = "dotButton";
             this.dotButton.Size = new System.Drawing.Size(138, 22);
             this.dotButton.Text = "Dot";
             // 
             // dashDotDotButton
             // 
+            this.dashDotDotButton.CheckOnClick = true;
             this.dashDotDotButton.Name = "dashDotDotButton";
             this.dashDotDotButton.Size = new System.Drawing.Size(138, 22);
             this.dashDotDotButton.Text = "DashDotDot";
@@ -207,11 +218,13 @@ namespace Lab_10
             // 
             this.aboutButton.Image = ((System.Drawing.Image)(resources.GetObject("aboutButton.Image")));
             this.aboutButton.Name = "aboutButton";
-            this.aboutButton.Size = new System.Drawing.Size(107, 22);
+            this.aboutButton.ShortcutKeys = System.Windows.Forms.Keys.F1;
+            this.aboutButton.Size = new System.Drawing.Size(126, 22);
             this.aboutButton.Text = "About";
             // 
             // pictureBox
             // 
+            this.pictureBox.BackColor = System.Drawing.Color.White;
             this.pictureBox.Location = new System.Drawing.Point(106, 27);
             this.pictureBox.Name = "pictureBox";
             this.pictureBox.Size = new System.Drawing.Size(682, 396);
@@ -313,6 +326,13 @@ namespace Lab_10
             this.trackBar1.Size = new System.Drawing.Size(155, 20);
             this.trackBar1.TabIndex = 0;
             // 
+            // panel2
+            // 
+            this.panel2.Location = new System.Drawing.Point(93, 24);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(707, 414);
+            this.panel2.TabIndex = 4;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -322,6 +342,7 @@ namespace Lab_10
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.pictureBox);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.panel2);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Form1";
@@ -370,6 +391,7 @@ namespace Lab_10
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label coordinatesLabel;
         private System.Windows.Forms.TrackBar trackBar1;
+        private System.Windows.Forms.Panel panel2;
     }
 }
 
