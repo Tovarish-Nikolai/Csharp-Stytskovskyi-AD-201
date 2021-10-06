@@ -12,23 +12,92 @@ namespace Lab_10
 {
     public partial class Form1 : Form
     {
+        bool drawing;
+
+        System.Drawing.Drawing2D.GraphicsPath currentPath;
+        Point oldLocation;
+        Pen currentPen;
+        Color historyColor;
+
         public Form1()
         {
             InitializeComponent();
 
+            drawing = false; //Переменная, ответственная за рисование
+            currentPen = new Pen(Color.Black);
+            historyColor = currentPen.Color;
+            currentPen.Width = trackBar1.Value;
+
             newButton.Click += NewButton_Click;
             saveButton.Click += SaveButton_Click;
             openButton.Click += OpenButton_Click;
+            exitButton.Click += ExitButton_Click;
 
             newButtonTS.Click += NewButtonTS_Click;
             saveButtonTS.Click += SaveButtonTS_Click;
             openButtonTS.Click += OpenButtonTS_Click;
+            exitButtonTS.Click += ExitButtonTS_Click;
         }
+
+        private void pictureBox_MouseMove(object sender, MouseEventArgs e)
+        {
+            coordinatesLabel.Text = e.X.ToString() + ", " + e.Y.ToString();
+
+            if (drawing)
+            {
+                Graphics g = Graphics.FromImage(pictureBox.Image);
+                currentPath.AddLine(oldLocation, e.Location);
+                g.DrawPath(currentPen, currentPath);
+                oldLocation = e.Location;
+                g.Dispose();
+                pictureBox.Invalidate();
+            }
+        }
+
+
+        private void pictureBox_MouseUp(object sender, MouseEventArgs e)
+        {
+            drawing = false;
+            currentPen.Color = historyColor;
+            try
+            {
+                currentPath.Dispose();
+            }
+            catch { };
+        }
+
+        private void pictureBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (pictureBox.Image == null)
+            {
+                MessageBox.Show("Сначала создайте новый файл!");
+                return;
+            }
+            if (e.Button == MouseButtons.Left)
+            {
+                drawing = true;
+                oldLocation = e.Location;
+                currentPath = new System.Drawing.Drawing2D.GraphicsPath();
+            }
+            else if (e.Button == MouseButtons.Right)
+            {
+                historyColor = currentPen.Color;
+
+                currentPen.Color = Color.White;
+                drawing = true;
+                oldLocation = e.Location;
+                currentPath = new System.Drawing.Drawing2D.GraphicsPath();
+            }
+        }
+
 
         private void OpenButtonTS_Click(object sender, EventArgs e) { OpenButton_Click(sender, e); }
         private void SaveButtonTS_Click(object sender, EventArgs e) { SaveButton_Click(sender, e); }
         private void NewButtonTS_Click(object sender, EventArgs e) { NewButton_Click(sender, e); }
+        private void ExitButtonTS_Click(object sender, EventArgs e) { Application.Exit(); }
 
+        private void ExitButton_Click(object sender, EventArgs e) { Application.Exit(); }
+       
         private void OpenButton_Click(object sender, EventArgs e)
         {
             OpenFileDialog OP = new OpenFileDialog();
@@ -95,12 +164,10 @@ namespace Lab_10
 
         }
 
-        private void pictureBox_MouseDown(object sender, MouseEventArgs e)
+        private void trackBar1_Scroll(object sender, EventArgs e)
         {
-            if (pictureBox.Image == null)
-            {
-                MessageBox.Show("Сначала создайте новый файл!");
-            }
+            currentPen.Width = trackBar1.Value;
+
         }
     }
 }

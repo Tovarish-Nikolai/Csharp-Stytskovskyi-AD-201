@@ -231,6 +231,8 @@ namespace Lab_10
             this.pictureBox.TabIndex = 1;
             this.pictureBox.TabStop = false;
             this.pictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseDown);
+            this.pictureBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseMove);
+            this.pictureBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseUp);
             // 
             // toolStrip1
             // 
@@ -257,7 +259,7 @@ namespace Lab_10
             this.newButtonTS.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.newButtonTS.Name = "newButtonTS";
             this.newButtonTS.Size = new System.Drawing.Size(98, 68);
-            this.newButtonTS.Text = "toolStripButton1";
+            this.newButtonTS.Text = "NEW";
             // 
             // saveButtonTS
             // 
@@ -266,7 +268,7 @@ namespace Lab_10
             this.saveButtonTS.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.saveButtonTS.Name = "saveButtonTS";
             this.saveButtonTS.Size = new System.Drawing.Size(98, 68);
-            this.saveButtonTS.Text = "toolStripButton2";
+            this.saveButtonTS.Text = "SAVE";
             // 
             // openButtonTS
             // 
@@ -275,7 +277,7 @@ namespace Lab_10
             this.openButtonTS.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.openButtonTS.Name = "openButtonTS";
             this.openButtonTS.Size = new System.Drawing.Size(98, 68);
-            this.openButtonTS.Text = "toolStripButton3";
+            this.openButtonTS.Text = "OPEN";
             // 
             // colorButtonTS
             // 
@@ -284,7 +286,7 @@ namespace Lab_10
             this.colorButtonTS.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.colorButtonTS.Name = "colorButtonTS";
             this.colorButtonTS.Size = new System.Drawing.Size(98, 68);
-            this.colorButtonTS.Text = "toolStripButton4";
+            this.colorButtonTS.Text = "COLOR";
             // 
             // toolStripSeparator2
             // 
@@ -298,7 +300,7 @@ namespace Lab_10
             this.exitButtonTS.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.exitButtonTS.Name = "exitButtonTS";
             this.exitButtonTS.Size = new System.Drawing.Size(98, 68);
-            this.exitButtonTS.Text = "toolStripButton5";
+            this.exitButtonTS.Text = "EXIT";
             // 
             // panel1
             // 
@@ -325,6 +327,7 @@ namespace Lab_10
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Size = new System.Drawing.Size(155, 20);
             this.trackBar1.TabIndex = 0;
+            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
             // 
             // panel2
             // 
