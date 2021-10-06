@@ -13,20 +13,31 @@ namespace Lab_10
     public partial class Form1 : Form
     {
         bool drawing;
+        int historyCounter; //Счетчик истории
 
         System.Drawing.Drawing2D.GraphicsPath currentPath;
         Point oldLocation;
         Pen currentPen;
         Color historyColor;
+        List<Image> History;
 
         public Form1()
         {
             InitializeComponent();
 
+            History = new List<Image>(); //Инициализация списка для истории
+
             drawing = false; //Переменная, ответственная за рисование
             currentPen = new Pen(Color.Black);
             historyColor = currentPen.Color;
             currentPen.Width = trackBar1.Value;
+
+            solidButton.Click += SolidButton_Click;
+            dotButton.Click += DotButton_Click;
+            dashDotDotButton.Click += DashDotDotButton_Click;
+
+            undoButton.Click += UndoButton_Click;
+            redoButton.Click += RedoButton_Click;
 
             newButton.Click += NewButton_Click;
             saveButton.Click += SaveButton_Click;
@@ -37,6 +48,49 @@ namespace Lab_10
             saveButtonTS.Click += SaveButtonTS_Click;
             openButtonTS.Click += OpenButtonTS_Click;
             exitButtonTS.Click += ExitButtonTS_Click;
+        }
+
+        private void DashDotDotButton_Click(object sender, EventArgs e)
+        {
+            currentPen.DashStyle = System.Drawing.Drawing2D.DashStyle.DashDot;
+            solidButton.Checked = false;
+            dotButton.Checked = false;
+            dashDotDotButton.Checked = true;
+        }
+
+        private void DotButton_Click(object sender, EventArgs e)
+        {
+            currentPen.DashStyle = System.Drawing.Drawing2D.DashStyle.Dot;
+            solidButton.Checked = false;
+            dotButton.Checked = true;
+            dashDotDotButton.Checked = false;
+        }
+
+        private void SolidButton_Click(object sender, EventArgs e)
+        {
+            currentPen.DashStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            solidButton.Checked = true;
+            dotButton.Checked = false;
+            dashDotDotButton.Checked = false;
+        }
+
+        private void RedoButton_Click(object sender, EventArgs e)
+        {
+            if (historyCounter < History.Count - 1)
+            {
+                pictureBox.Image = new Bitmap(History[++historyCounter]);
+            }
+            else MessageBox.Show("История пуста");
+        }
+
+        private void UndoButton_Click(object sender, EventArgs e)
+        {
+            if (History.Count != 0 && historyCounter != 0)
+            {
+                pictureBox.Image = new Bitmap(History[--historyCounter]);
+            }
+            else MessageBox.Show("История пуста");
+
         }
 
         private void pictureBox_MouseMove(object sender, MouseEventArgs e)
@@ -57,6 +111,12 @@ namespace Lab_10
 
         private void pictureBox_MouseUp(object sender, MouseEventArgs e)
         {
+            //Очистка ненужной истории
+            History.RemoveRange(historyCounter + 1, History.Count - historyCounter - 1);
+            History.Add(new Bitmap(pictureBox.Image));
+            if (historyCounter + 1 < 10) historyCounter++;
+            if (History.Count - 1 == 10) History.RemoveAt(0);
+
             drawing = false;
             currentPen.Color = historyColor;
             try
@@ -125,8 +185,8 @@ namespace Lab_10
                 (System.IO.FileStream)SaveDlg.OpenFile();
                 switch (SaveDlg.FilterIndex)
                 {
-                    case 1:
-                        this.pictureBox.Image.Save(fs, System.Drawing.Imaging.ImageFormat.Jpeg);
+                    case 1:                        
+                        this.pictureBox.Image.Save(fs, System.Drawing.Imaging.ImageFormat.Jpeg);                       
                         break;
                     case 2:
                         this.pictureBox.Image.Save(fs, System.Drawing.Imaging.ImageFormat.Bmp);
@@ -155,8 +215,17 @@ namespace Lab_10
                     }
             }
 
+            History.Clear();
+            historyCounter = 0;
+
             Bitmap pic = new Bitmap(750, 500);
             pictureBox.Image = pic;
+
+            Graphics g = Graphics.FromImage(pictureBox.Image);
+            g.Clear(Color.White);
+            g.DrawImage(pictureBox.Image, 0, 0, 750, 500);
+
+            History.Add(new Bitmap(pictureBox.Image));
         }
 
         private void Form1_Load(object sender, EventArgs e)
