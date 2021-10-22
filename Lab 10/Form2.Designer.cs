@@ -34,7 +34,7 @@ namespace Lab_10
             this.LabelBlue = new System.Windows.Forms.Label();
             this.SBRed = new System.Windows.Forms.HScrollBar();
             this.SBGreen = new System.Windows.Forms.HScrollBar();
-            this.SBBluee = new System.Windows.Forms.HScrollBar();
+            this.SBBlue = new System.Windows.Forms.HScrollBar();
             this.UDRed = new System.Windows.Forms.NumericUpDown();
             this.UDGreen = new System.Windows.Forms.NumericUpDown();
             this.UDBlue = new System.Windows.Forms.NumericUpDown();
@@ -83,6 +83,8 @@ namespace Lab_10
             this.SBRed.Name = "SBRed";
             this.SBRed.Size = new System.Drawing.Size(193, 17);
             this.SBRed.TabIndex = 3;
+            this.SBRed.Scroll += new System.Windows.Forms.ScrollEventHandler(this.SBRed_Scroll);
+            this.SBRed.ValueChanged += new System.EventHandler(this.SBRed_ValueChanged);
             // 
             // SBGreen
             // 
@@ -92,15 +94,19 @@ namespace Lab_10
             this.SBGreen.Name = "SBGreen";
             this.SBGreen.Size = new System.Drawing.Size(193, 17);
             this.SBGreen.TabIndex = 4;
+            this.SBGreen.Scroll += new System.Windows.Forms.ScrollEventHandler(this.SBGreen_Scroll);
+            this.SBGreen.ValueChanged += new System.EventHandler(this.SBGreen_ValueChanged);
             // 
-            // SBBluee
+            // SBBlue
             // 
-            this.SBBluee.LargeChange = 1;
-            this.SBBluee.Location = new System.Drawing.Point(117, 97);
-            this.SBBluee.Maximum = 255;
-            this.SBBluee.Name = "SBBluee";
-            this.SBBluee.Size = new System.Drawing.Size(193, 17);
-            this.SBBluee.TabIndex = 5;
+            this.SBBlue.LargeChange = 1;
+            this.SBBlue.Location = new System.Drawing.Point(117, 97);
+            this.SBBlue.Maximum = 255;
+            this.SBBlue.Name = "SBBlue";
+            this.SBBlue.Size = new System.Drawing.Size(193, 17);
+            this.SBBlue.TabIndex = 5;
+            this.SBBlue.Scroll += new System.Windows.Forms.ScrollEventHandler(this.SBBlue_Scroll);
+            this.SBBlue.ValueChanged += new System.EventHandler(this.SBBlue_ValueChanged);
             // 
             // UDRed
             // 
@@ -113,7 +119,7 @@ namespace Lab_10
             this.UDRed.Name = "UDRed";
             this.UDRed.Size = new System.Drawing.Size(43, 23);
             this.UDRed.TabIndex = 6;
-            this.UDRed.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
+            this.UDRed.ValueChanged += new System.EventHandler(this.UDRed_ValueChanged);
             // 
             // UDGreen
             // 
@@ -126,6 +132,7 @@ namespace Lab_10
             this.UDGreen.Name = "UDGreen";
             this.UDGreen.Size = new System.Drawing.Size(43, 23);
             this.UDGreen.TabIndex = 7;
+            this.UDGreen.ValueChanged += new System.EventHandler(this.UDGreen_ValueChanged);
             // 
             // UDBlue
             // 
@@ -138,6 +145,7 @@ namespace Lab_10
             this.UDBlue.Name = "UDBlue";
             this.UDBlue.Size = new System.Drawing.Size(43, 23);
             this.UDBlue.TabIndex = 8;
+            this.UDBlue.ValueChanged += new System.EventHandler(this.UDBlue_ValueChanged);
             // 
             // PBPreview
             // 
@@ -167,12 +175,13 @@ namespace Lab_10
             // 
             // buttonOtherColors
             // 
-            this.buttonOtherColors.Location = new System.Drawing.Point(428, 148);
+            this.buttonOtherColors.Location = new System.Drawing.Point(416, 148);
             this.buttonOtherColors.Name = "buttonOtherColors";
-            this.buttonOtherColors.Size = new System.Drawing.Size(75, 23);
+            this.buttonOtherColors.Size = new System.Drawing.Size(100, 23);
             this.buttonOtherColors.TabIndex = 12;
             this.buttonOtherColors.Text = "Other Colors";
             this.buttonOtherColors.UseVisualStyleBackColor = true;
+            this.buttonOtherColors.Click += new System.EventHandler(this.buttonOtherColors_Click);
             // 
             // Form2
             // 
@@ -186,7 +195,7 @@ namespace Lab_10
             this.Controls.Add(this.UDBlue);
             this.Controls.Add(this.UDGreen);
             this.Controls.Add(this.UDRed);
-            this.Controls.Add(this.SBBluee);
+            this.Controls.Add(this.SBBlue);
             this.Controls.Add(this.SBGreen);
             this.Controls.Add(this.SBRed);
             this.Controls.Add(this.LabelBlue);
@@ -212,7 +221,6 @@ namespace Lab_10
         private System.Windows.Forms.HScrollBar SBRed;
         private System.Windows.Forms.HScrollBar SBGreen;
         private System.Windows.Forms.HScrollBar SBBlue;
-        private System.Windows.Forms.HScrollBar SBBluee;
         private System.Windows.Forms.NumericUpDown UDRed;
         private System.Windows.Forms.NumericUpDown UDGreen;
         private System.Windows.Forms.NumericUpDown UDBlue;
