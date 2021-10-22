@@ -46,8 +46,23 @@ namespace Lab_10
 
             newButtonTS.Click += NewButtonTS_Click;
             saveButtonTS.Click += SaveButtonTS_Click;
+            colorButtonTS.Click += ColorButtonTS_Click;
             openButtonTS.Click += OpenButtonTS_Click;
             exitButtonTS.Click += ExitButtonTS_Click;
+
+            colorButton.Click += ColorButton_Click;
+        }        
+
+        protected void changeColor (Color color)
+        {
+            currentPen.Color = color;
+        }
+
+        private void ColorButton_Click(object sender, EventArgs e)
+        {
+            Form2 f = new Form2(currentPen.Color);
+            f.Owner = this;
+            f.ShowDialog();
         }
 
         private void DashDotDotButton_Click(object sender, EventArgs e)
@@ -138,6 +153,7 @@ namespace Lab_10
                 drawing = true;
                 oldLocation = e.Location;
                 currentPath = new System.Drawing.Drawing2D.GraphicsPath();
+                historyColor = currentPen.Color;
             }
             else if (e.Button == MouseButtons.Right)
             {
@@ -150,7 +166,7 @@ namespace Lab_10
             }
         }
 
-
+        private void ColorButtonTS_Click(object sender, EventArgs e) { ColorButton_Click(sender, e); }        
         private void OpenButtonTS_Click(object sender, EventArgs e) { OpenButton_Click(sender, e); }
         private void SaveButtonTS_Click(object sender, EventArgs e) { SaveButton_Click(sender, e); }
         private void NewButtonTS_Click(object sender, EventArgs e) { NewButton_Click(sender, e); }
@@ -236,7 +252,6 @@ namespace Lab_10
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
             currentPen.Width = trackBar1.Value;
-
         }
     }
 }

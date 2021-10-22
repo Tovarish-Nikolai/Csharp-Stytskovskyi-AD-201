@@ -28,7 +28,7 @@ namespace Lab_10
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
-        {
+        {           
             this.LabelRed = new System.Windows.Forms.Label();
             this.LabelGreen = new System.Windows.Forms.Label();
             this.LabelBlue = new System.Windows.Forms.Label();
@@ -163,6 +163,7 @@ namespace Lab_10
             this.buttonOk.TabIndex = 10;
             this.buttonOk.Text = "Ok";
             this.buttonOk.UseVisualStyleBackColor = true;
+            this.buttonOk.Click += new System.EventHandler(this.buttonOk_Click);
             // 
             // buttonCancel
             // 
@@ -172,6 +173,7 @@ namespace Lab_10
             this.buttonCancel.TabIndex = 11;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // buttonOtherColors
             // 

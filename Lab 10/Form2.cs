@@ -8,20 +8,26 @@ using System.Windows.Forms;
 
 namespace Lab_10
 {
-    public partial class Form2 : Form
+    public partial class Form2 : Form1
     {
+        
+
         Color colorResult;
 
         public Form2(Color color)
         {
-            InitializeComponent();
+            InitializeComponent();            
+
+            PBPreview.BackColor = color;
 
             SBRed.Tag = UDRed;
             SBGreen.Tag = UDGreen;
             SBBlue.Tag = UDBlue;
-            UDRed.Tag = SBRed.Tag;
-            UDGreen.Tag = SBGreen.Tag;
-            UDBlue.Tag = SBBlue.Tag;
+
+            UDRed.Tag = SBRed;
+            UDGreen.Tag = SBGreen;
+            UDBlue.Tag = SBBlue;
+
             UDRed.Value = color.R;
             UDGreen.Value = color.G;
             UDBlue.Value = color.B;
@@ -68,17 +74,21 @@ namespace Lab_10
 
         private void UDGreen_ValueChanged(object sender, EventArgs e)
         {
-            SBRed_ValueChanged(sender, e);
+            NumericUpDown numericUpDown = (NumericUpDown)sender;
+            ScrollBar scrollBar = (ScrollBar)numericUpDown.Tag;
+            scrollBar.Value = (int)numericUpDown.Value;
+
+            UpdateColor();
         }
 
         private void UDBlue_ValueChanged(object sender, EventArgs e)
         {
-            SBRed_ValueChanged(sender, e);
+            UDGreen_ValueChanged(sender, e);
         }
 
         private void UDRed_ValueChanged(object sender, EventArgs e)
         {
-            SBRed_ValueChanged(sender, e);
+            UDGreen_ValueChanged(sender, e);
         }
         private void UpdateColor()
         {
@@ -98,6 +108,19 @@ namespace Lab_10
 
                 UpdateColor();
             }
+        }
+
+        private void buttonOk_Click(object sender, EventArgs e)
+        {
+            Form1 main = this.Owner as Form1;
+            if (main != null)
+                changeColor(colorResult);
+            this.Close();
+        }
+
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
