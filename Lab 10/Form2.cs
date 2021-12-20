@@ -8,52 +8,27 @@ using System.Windows.Forms;
 
 namespace Lab_10
 {
-    public partial class Form2 : Form1
+    public partial class Form2 : Form
     {
-        
 
         Color colorResult;
 
         public Form2(Color color)
         {
-            InitializeComponent();            
+            InitializeComponent();
 
-            PBPreview.BackColor = color;
-
-            SBRed.Tag = UDRed;
-            SBGreen.Tag = UDGreen;
-            SBBlue.Tag = UDBlue;
-
-            UDRed.Tag = SBRed;
-            UDGreen.Tag = SBGreen;
-            UDBlue.Tag = SBBlue;
-
-            UDRed.Value = color.R;
-            UDGreen.Value = color.G;
-            UDBlue.Value = color.B;
+            SB_red.Tag = num_red;
+            SB_green.Tag = num_green;
+            SB_blue.Tag = num_blue;
+            num_red.Tag = SB_red;
+            num_green.Tag = SB_green;
+            num_blue.Tag = SB_blue;
+            num_red.Value = color.R;
+            num_green.Value = color.G;
+            num_blue.Value = color.B;
         }
 
-        private void Form2_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void SBRed_Scroll(object sender, ScrollEventArgs e)
-        {
-
-        }
-
-        private void SBBlue_Scroll(object sender, ScrollEventArgs e)
-        {
-
-        }
-
-        private void SBGreen_Scroll(object sender, ScrollEventArgs e)
-        {
-
-        }
-
-        private void SBRed_ValueChanged(object sender, EventArgs e)
+        private void Scroll_Red_ValueChanged(object sender, EventArgs e)
         {
             ScrollBar scrollBar = (ScrollBar)sender;
             NumericUpDown numericUpDown = (NumericUpDown)scrollBar.Tag;
@@ -62,59 +37,70 @@ namespace Lab_10
             UpdateColor();
         }
 
-        private void SBGreen_ValueChanged(object sender, EventArgs e)
+        private void Scroll_Green_ValueChanged(object sender, EventArgs e)
         {
-            SBRed_ValueChanged(sender, e);
-        }
-
-        private void SBBlue_ValueChanged(object sender, EventArgs e)
-        {
-            SBRed_ValueChanged(sender, e);
-        }
-
-        private void UDGreen_ValueChanged(object sender, EventArgs e)
-        {
-            NumericUpDown numericUpDown = (NumericUpDown)sender;
-            ScrollBar scrollBar = (ScrollBar)numericUpDown.Tag;
-            scrollBar.Value = (int)numericUpDown.Value;
+            ScrollBar scrollBar = (ScrollBar)sender;
+            NumericUpDown numericUpDown = (NumericUpDown)scrollBar.Tag;
+            numericUpDown.Value = scrollBar.Value;
 
             UpdateColor();
         }
 
-        private void UDBlue_ValueChanged(object sender, EventArgs e)
+        private void Scroll_Blue_ValueChanged(object sender, EventArgs e)
         {
-            UDGreen_ValueChanged(sender, e);
+            ScrollBar scrollBar = (ScrollBar)sender;
+            NumericUpDown numericUpDown = (NumericUpDown)scrollBar.Tag;
+            numericUpDown.Value = scrollBar.Value;
+
+            UpdateColor();
         }
 
-        private void UDRed_ValueChanged(object sender, EventArgs e)
+        private void numeric_Red_ValueChanged(object sender, EventArgs e)
         {
-            UDGreen_ValueChanged(sender, e);
+            NumericUpDown numericUpDown = (NumericUpDown)sender;
+            ScrollBar scrollBar = (ScrollBar)numericUpDown.Tag;
+            scrollBar.Value = (int)numericUpDown.Value;
         }
+
+        private void numeric_Green_ValueChanged(object sender, EventArgs e)
+        {
+            NumericUpDown numericUpDown = (NumericUpDown)sender;
+            ScrollBar scrollBar = (ScrollBar)numericUpDown.Tag;
+            scrollBar.Value = (int)numericUpDown.Value;
+        }
+
+        private void numeric_Blue_ValueChanged(object sender, EventArgs e)
+        {
+            NumericUpDown numericUpDown = (NumericUpDown)sender;
+            ScrollBar scrollBar = (ScrollBar)numericUpDown.Tag;
+            scrollBar.Value = (int)numericUpDown.Value;
+        }
+
         private void UpdateColor()
         {
-            colorResult = Color.FromArgb(SBRed.Value, SBGreen.Value, SBBlue.Value);
-            PBPreview.BackColor = colorResult;
+            colorResult = Color.FromArgb(SB_red.Value, SB_green.Value,
+            SB_blue.Value);
+            picResultColor.BackColor = colorResult;
         }
 
-        private void buttonOtherColors_Click(object sender, EventArgs e)
+        private void b_other_Click(object sender, EventArgs e)
         {
             ColorDialog colorDialog = new ColorDialog();
             if (colorDialog.ShowDialog() == DialogResult.OK)
             {
-                SBRed.Value = colorDialog.Color.R;
-                SBGreen.Value = colorDialog.Color.G;
-                SBBlue.Value = colorDialog.Color.B;
+                SB_red.Value = colorDialog.Color.R;
+                SB_green.Value = colorDialog.Color.G;
+                SB_blue.Value = colorDialog.Color.B;
                 colorResult = colorDialog.Color;
 
                 UpdateColor();
             }
         }
-
         private void buttonOk_Click(object sender, EventArgs e)
         {
             Form1 main = this.Owner as Form1;
             if (main != null)
-                changeColor(colorResult);
+                main.changeColor(colorResult);
             this.Close();
         }
 

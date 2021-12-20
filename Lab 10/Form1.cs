@@ -53,7 +53,7 @@ namespace Lab_10
             colorButton.Click += ColorButton_Click;
         }        
 
-        protected void changeColor (Color color)
+        public void changeColor (Color color)
         {
             currentPen.Color = color;
         }
@@ -252,6 +252,11 @@ namespace Lab_10
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
             currentPen.Width = trackBar1.Value;
+        }
+
+        private void pictureBox_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
